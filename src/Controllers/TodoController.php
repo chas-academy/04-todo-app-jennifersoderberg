@@ -30,10 +30,10 @@ class TodoController extends Controller {
         $title = $body['title'];
         $errormsg;
 
-        if($completed = 1) {
-          $completed = true;
+        if($completed == 0) {
+          $completed = "false";
         } else {
-          $completed = false;
+          $completed = "true";
         }
 
         // TODO: Implement me!

@@ -17,7 +17,7 @@ class TodoItem extends Model
         return $result;
     }
 
-    public static function updateTodo($todoId, $title, $completed = null)
+    public static function updateTodo($todoId, $title, $completed)
     {
         // TODO: Implement me!
         // Update a specific todo
