@@ -36,32 +36,22 @@ class TodoController extends Controller {
           $completed = "true";
         }
 
-        // TODO: Implement me!
-        // This action should update a specific todo item in the todos table using the TodoItem::updateTodo method.
-        // Try and figure out what parameters you need to pass to the updateTodo-method in the TodoItem model.
         $result = TodoItem::updateTodo($todoId, $title, $completed);
 
-        // if there's a result
-          // use the redirect method to send the user back to the list of todos $this->redirect('/');
-        // otherwise, throw an exception or show an error message
         if($result) {
           $this->redirect('/');
         }
-        
         throw new Exception('Something went wrong');
-        
     }
 
     public function delete($urlParams)
     {
-      // TODO: Implement me!
-      $todoId = $urlParams['id'];
+        $todoId = $urlParams['id'];
+        $result = TodoItem::deletetodo($todoId);
 
-      $result = TodoItem::deletetodo($todoId);
-
-      if($result) {
-        $this->redirect('/');
-      }
+        if($result) {
+          $this->redirect('/');
+        }
     }
 
     /**
@@ -77,14 +67,12 @@ class TodoController extends Controller {
 
     public function clear($urlParams)
     {
-      // (OPTIONAL) TODO: This action should remove all completed todos from the table.
-      $todoId = $urlParams['id'];
+        $todoId = $urlParams['id'];
+        $result = TodoItem::clearCompletedTodos($todoId);
 
-      $result = TodoItem::clearCompletedTodos($todoId);
-
-      if($result) {
-        $this->redirect('/');
-      }
+        if($result) {
+          $this->redirect('/');
+        }
     }
 
 }

@@ -8,8 +8,6 @@ class TodoItem extends Model
 
     public static function createTodo($title)
     {
-        // TODO: Implement me!
-        // Create a new todo
         $query = "INSERT INTO todos (title, created) VALUES ('$title', now())";
         static::$db->query($query);
         $result = self::$db->execute();
@@ -19,8 +17,6 @@ class TodoItem extends Model
 
     public static function updateTodo($todoId, $title, $completed)
     {
-        // TODO: Implement me!
-        // Update a specific todo
         $query = "UPDATE todos 
                 SET title = '$title', completed = '$completed' 
                 WHERE id = $todoId";
@@ -32,8 +28,6 @@ class TodoItem extends Model
 
     public static function deleteTodo($todoId)
     {
-        // TODO: Implement me!
-        // Delete a specific todo
         $query = "DELETE FROM todos WHERE id = $todoId";
         static::$db->query($query);
         $result = self::$db->execute();
@@ -50,9 +44,6 @@ class TodoItem extends Model
 
     public static function clearCompletedTodos()
     {
-        // TODO: Implement me!
-        // This is to delete all the completed todos from the database
-
         $query = "DELETE FROM todos WHERE completed = 'true'";
         static::$db->query($query);
         $result = self::$db->execute();
