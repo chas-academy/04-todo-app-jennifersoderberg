@@ -17,11 +17,18 @@ class TodoItem extends Model
         return $result;
     }
 
-    // // public static function updateTodo($todoId, $title, $completed = null)
-    // // {
-    // //     // TODO: Implement me!
-    // //     // Update a specific todo
-    // // }
+    public static function updateTodo($todoId, $title, $completed = null)
+    {
+        // TODO: Implement me!
+        // Update a specific todo
+        $query = "UPDATE todos 
+                SET title = '$title', completed = '$completed' 
+                WHERE id = $todoId";
+        static::$db->query($query);
+        $result = self::$db->execute();
+
+        return $result;
+    }
 
     public static function deleteTodo($todoId)
     {
