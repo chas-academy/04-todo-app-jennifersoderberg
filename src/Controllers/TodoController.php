@@ -28,7 +28,6 @@ class TodoController extends Controller {
         $todoId = $urlParams['id']; // the id of the todo we're trying to update
         $completed = isset($body['status']) ? 1 : 0; // whether or not the todo has been checked or not
         $title = $body['title'];
-        $errormsg;
 
         if($completed == 0) {
           $completed = "false";
@@ -61,8 +60,24 @@ class TodoController extends Controller {
      * if you're aiming for a higher grade.
      */
     public function toggle()
-    {
-      // (OPTIONAL) TODO: This action should toggle all todos to completed, or not completed.
+    {        
+      $todos = TodoItem::findAll();
+
+      $counter = count(array_filter($todos, function ($todo) {
+        return $todo['completed'] === "false";
+      }));
+
+      if($counter > 0) {
+        $completed = 2;
+      } else {
+        $completed = 1;
+      }
+
+      $result = TodoItem::toggleTodos($completed);
+
+      if($result) {
+        $this->redirect('/');
+      }
     }
 
     public function clear($urlParams)
