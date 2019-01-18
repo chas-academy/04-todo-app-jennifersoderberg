@@ -90,4 +90,17 @@ class TodoController extends Controller {
         }
     }
 
+
+    public function filterCompleted()
+    {
+      $todos = TodoItem::filterCompleted();
+      return $this->view('index', ['todos' => $todos]);
+    }
+
+    public function filterNotCompleted()
+    {
+      $todos = TodoItem::filterNotCompleted();
+      return $this->view('index', ['todos' => $todos]);
+    }
+
 }
